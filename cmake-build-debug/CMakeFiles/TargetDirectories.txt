@@ -1,0 +1,4 @@
+C:/Users/PinkySmile/Documents/GitHub/ChallongeLib/cmake-build-debug/CMakeFiles/ChallongeLib.dir
+C:/Users/PinkySmile/Documents/GitHub/ChallongeLib/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/PinkySmile/Documents/GitHub/ChallongeLib/cmake-build-debug/CMakeFiles/test.dir
+C:/Users/PinkySmile/Documents/GitHub/ChallongeLib/cmake-build-debug/CMakeFiles/edit_cache.dir

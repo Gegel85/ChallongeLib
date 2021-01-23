@@ -1,0 +1,2 @@
+C:\msys64\mingw64\bin\ar.exe qc libChallongeLib.a  CMakeFiles/ChallongeLib.dir/src/Socket.cpp.obj CMakeFiles/ChallongeLib.dir/src/SecuredSocket.cpp.obj CMakeFiles/ChallongeLib.dir/src/Client.cpp.obj CMakeFiles/ChallongeLib.dir/src/Tournament.cpp.obj CMakeFiles/ChallongeLib.dir/src/Time.cpp.obj CMakeFiles/ChallongeLib.dir/src/JsonUtils.cpp.obj CMakeFiles/ChallongeLib.dir/src/Match.cpp.obj CMakeFiles/ChallongeLib.dir/src/Participant.cpp.obj
+C:\msys64\mingw64\bin\ranlib.exe libChallongeLib.a

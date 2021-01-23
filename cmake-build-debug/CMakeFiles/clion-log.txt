@@ -1,0 +1,4 @@
+"C:\Program Files\JetBrains\CLion 2020.2.5\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DUSERNAME=PinkySmile -DPASSWD=vMARYliEfiwo8K2WIUTblqsEf04u4nxE77L4tQwE -G "CodeBlocks - MinGW Makefiles" C:\Users\PinkySmile\Documents\GitHub\ChallongeLib
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/PinkySmile/Documents/GitHub/ChallongeLib/cmake-build-debug
