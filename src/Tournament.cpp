@@ -147,7 +147,7 @@ namespace ChallongeAPI
 		return this->_category;
 	}
 
-	size_t Tournament::getCheckInDuration() const
+	const std::optional<size_t> &Tournament::getCheckInDuration() const
 	{
 		return this->_checkInDuration;
 	}
@@ -462,7 +462,7 @@ namespace ChallongeAPI
 		return this->_showRounds;
 	}
 
-	const std::string &Tournament::getSignUpUrl() const
+	const std::optional<std::string> &Tournament::getSignUpUrl() const
 	{
 		return this->_signUpUrl;
 	}
@@ -482,7 +482,7 @@ namespace ChallongeAPI
 		return this->_splitParticipants;
 	}
 
-	const Time &Tournament::getStartAt() const
+	const std::optional<Time> &Tournament::getStartAt() const
 	{
 		return this->_startAt;
 	}

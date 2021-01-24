@@ -44,22 +44,8 @@ namespace ChallongeAPI
 		}
 	}
 
-	template<typename type, typename ...Args>
-	void getFromJson(std::vector<std::shared_ptr<type>> &val, const std::string &id, const json &obj, Args &...args)
-	{
-		try {
-			auto &elem = obj[id];
-			std::vector<std::shared_ptr<type>> buff;
-
-			buff.reserve(elem.size());
-			for (auto &e : elem)
-				buff.push_back(std::make_shared<type>(args..., e));
-			val.swap(buff);
-		} catch (std::exception &e) {
-			std::cerr << "Error getting element " << id << " from " << obj.dump(4) << ": " << e.what() << std::endl;
-			throw;
-		}
-	}
+	template<>
+	void getFromJson(std::optional<std::pair<size_t, size_t>> &val, const std::string &id, const json &obj);
 
 	template<typename type>
 	void getFromJson(std::vector<type> &val, const std::string &id, const json &obj)
@@ -71,6 +57,23 @@ namespace ChallongeAPI
 			buff.reserve(elem.size());
 			for (auto &e : elem)
 				buff.emplace_back() = e;
+			val.swap(buff);
+		} catch (std::exception &e) {
+			std::cerr << "Error getting element " << id << " from " << obj.dump(4) << ": " << e.what() << std::endl;
+			throw;
+		}
+	}
+
+	template<typename type, typename ...Args>
+	void getFromJson(std::vector<std::shared_ptr<type>> &val, const std::string &id, const json &obj, Args &...args)
+	{
+		try {
+			auto &elem = obj[id];
+			std::vector<std::shared_ptr<type>> buff;
+
+			buff.reserve(elem.size());
+			for (auto &e : elem)
+				buff.push_back(std::make_shared<type>(args..., e));
 			val.swap(buff);
 		} catch (std::exception &e) {
 			std::cerr << "Error getting element " << id << " from " << obj.dump(4) << ": " << e.what() << std::endl;

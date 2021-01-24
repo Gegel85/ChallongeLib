@@ -57,4 +57,11 @@ namespace ChallongeAPI
 			throw;
 		}
 	}
+
+
+	template<>
+	void getFromJson(std::optional<std::pair<size_t, size_t>> &val, const std::string &id, const json &obj)
+	{
+
+	}
 }

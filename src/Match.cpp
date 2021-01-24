@@ -164,12 +164,12 @@ namespace ChallongeAPI
 		return this->_scheduledTime;
 	}
 
-	const std::vector<size_t> &Match::getScores() const
+	const std::optional<std::pair<size_t, size_t>> &Match::getScores() const
 	{
 		return this->_scores;
 	}
 
-	const Time &Match::getStartedAt() const
+	const std::optional<Time> &Match::getStartedAt() const
 	{
 		return this->_startedAt;
 	}
@@ -209,12 +209,12 @@ namespace ChallongeAPI
 		return this->_winnerId;
 	}
 
-	size_t Match::getPlayer1Id() const
+	const std::optional<size_t> &Match::getPlayer1Id() const
 	{
 		return this->_player1Id;
 	}
 
-	size_t Match::getPlayer2Id() const
+	const std::optional<size_t> &Match::getPlayer2Id() const
 	{
 		return this->_player2Id;
 	}

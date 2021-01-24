@@ -28,7 +28,7 @@ namespace ChallongeAPI
 		bool                                      _anonymousVoting;
 		std::optional<json>                       _autoAssignStations;
 		std::optional<json>                       _category;
-		size_t                                    _checkInDuration;
+		std::optional<size_t>                     _checkInDuration;
 		std::optional<Time>                       _completedAt;
 		Time                                      _createdAt;
 		bool                                      _createdByApi;
@@ -91,11 +91,11 @@ namespace ChallongeAPI
 		bool                                      _sequentialPairings;
 		std::optional<json>                       _showParticipantCountry;
 		bool                                      _showRounds;
-		std::string                               _signUpUrl;
+		std::optional<std::string>                _signUpUrl;
 		std::optional<json>                       _signupCap;
 		std::optional<json>                       _spam;
 		bool                                      _splitParticipants;
-		Time                                      _startAt;
+		std::optional<Time>                       _startAt;
 		std::optional<Time>                       _startedAt;
 		std::optional<Time>                       _startedChecking_in_at;
 		std::string                               _state;
@@ -126,7 +126,7 @@ namespace ChallongeAPI
 		bool                                      hasAnonymousVoting() const;
 		const std::optional<json>                 &getAutoAssignStations() const;
 		const std::optional<json>                 &getCategory() const;
-		size_t                                    getCheckInDuration() const;
+		const std::optional<size_t>               &getCheckInDuration() const;
 		const std::optional<Time>                 &getCompletedAt() const;
 		const Time                                &getCreatedAt() const;
 		bool                                      isCreatedByApi() const;
@@ -189,11 +189,11 @@ namespace ChallongeAPI
 		bool                                      isPairingsSequential() const;
 		const std::optional<json>                 &getShowParticipantCountry() const;
 		bool                                      areRoundsShown() const;
-		const std::string                         &getSignUpUrl() const;
+		const std::optional<std::string>          &getSignUpUrl() const;
 		const std::optional<json>                 &getSignupCap() const;
 		const std::optional<json>                 &getSpam() const;
 		bool                                      areParticipantsSplit() const;
-		const Time                                &getStartAt() const;
+		const std::optional<Time>                 &getStartAt() const;
 		const std::optional<Time>                 &getStartedAt() const;
 		const std::optional<Time>                 &getStartedCheckingInAt() const;
 		const std::string                         &getState() const;
