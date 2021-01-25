@@ -2,8 +2,8 @@
 // Created by Gegel85 on 05/04/2019.
 //
 
-#ifndef DISC_ORD_SOCKET_HPP
-#define DISC_ORD_SOCKET_HPP
+#ifndef CHALLONGESOKU_SOCKET_HPP
+#define CHALLONGESOKU_SOCKET_HPP
 
 
 #ifdef _WIN32
@@ -140,4 +140,4 @@
 	};
 }
 
-#endif //DISC_ORD_SOCKET_HPP
+#endif //CHALLONGESOKU_SOCKET_HPP

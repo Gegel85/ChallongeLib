@@ -172,27 +172,26 @@ namespace ChallongeAPI
 		unsigned time = 11;
 
 		while (size != 0) {
-			FD_ZERO(&rd);
-			FD_SET(this->_sockfd, &rd);
-			timeout.tv_sec = 1;
-			timeout.tv_usec = 0;
-			switch (select(FD_SETSIZE, &rd, nullptr, nullptr, &timeout)){
-			case 0:
-				if (result.empty() && (--time))
-					continue;
-				return result;
-			case -1:
-				throw EOFException(getLastSocketError());
-			default:
-				break;
-			}
-
 			int bytes = SSL_read(this->_connection, buffer, (static_cast<unsigned>(size) >= sizeof(buffer) - 1) ? (sizeof(buffer) - 1) : (size));
 
-			if (bytes < 0) {
-				if (WSAGetLastError() == 10035)
+			if (bytes <= 0) {
+				/* failed SSL_read */
+				int err = SSL_get_error(this->_connection, bytes);
+
+				switch(err) {
+					case SSL_ERROR_NONE: /* this is not an error */
+				case SSL_ERROR_ZERO_RETURN: /* no more data */
 					return result;
-				throw EOFException(getLastSocketError());
+				case SSL_ERROR_WANT_READ:
+				case SSL_ERROR_WANT_WRITE:
+					if (WSAGetLastError() == WSAEWOULDBLOCK) {
+						usleep(10000);
+						continue;
+					}
+					throw EOFException(getSSLError(bytes));
+				default:
+					throw EOFException(getSSLError(bytes));
+				}
 			}
 			result.reserve(result.size() + bytes + 1);
 			result.insert(result.end(), buffer, buffer + bytes);

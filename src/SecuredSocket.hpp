@@ -2,8 +2,8 @@
 // Created by Gegel85 on 06/04/2019.
 //
 
-#ifndef DISC_ORD_SECUREDSOCKET_HPP
-#define DISC_ORD_SECUREDSOCKET_HPP
+#ifndef CHALLONGESOKU_SECUREDSOCKET_HPP
+#define CHALLONGESOKU_SECUREDSOCKET_HPP
 
 
 #include <openssl/ssl.h>
@@ -32,4 +32,4 @@ namespace ChallongeAPI
 }
 
 
-#endif //DISC_ORD_SECUREDSOCKET_HPP
+#endif //CHALLONGESOKU_SECUREDSOCKET_HPP

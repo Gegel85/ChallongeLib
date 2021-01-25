@@ -105,21 +105,25 @@ namespace ChallongeAPI
 		std::string response = this->makeRawRequest(request.host, request.portno, requestString);
 		auto answer = Socket::parseHttpResponse(response);
 
-		if (answer.header.find("Content-Length") == answer.header.end()) {
-			size_t pos = 0;
-			size_t off;
-			std::string result;
+		try {
+			if (answer.header.find("Content-Length") == answer.header.end()) {
+				size_t pos = 0;
+				size_t off;
+				std::string result;
 
-			while (pos < answer.body.size()) {
-				auto tmp = answer.body.substr(pos);
-				auto s = std::stol(tmp, &off, 16);
+				while (pos < answer.body.size()) {
+					auto tmp = answer.body.substr(pos);
+					auto s = std::stol(tmp, &off, 16);
 
-				pos += off + 2;
-				result += answer.body.substr(pos, s);
-				pos += 2 + s;
+					if (off + 4 + s > tmp.size() || tmp[off] != '\r' || tmp[off + 1] != '\n')
+						throw s;
+					pos += off + 2;
+					result += answer.body.substr(pos, s);
+					pos += 2 + s;
+				}
+				answer.body = result;
 			}
-			answer.body = result;
-		}
+		} catch (...) {}
 		answer.request = request;
 
 		if (answer.returnCode >= 400)
