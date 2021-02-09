@@ -27,7 +27,7 @@ namespace ChallongeAPI
 	{
 		Socket::HttpRequest request;
 
-		std::cout << "Making request " << method << " to https://" << Client::_host << path << std::endl;
+		std::cout << "Making request " << method << " to https://" << Client::_host << Client::_basePath << path << std::endl;
 		request.httpVer = "HTTP/1.1";
 		request.method = method;
 		request.path = Client::_basePath + path;
@@ -38,14 +38,14 @@ namespace ChallongeAPI
 		return this->_sock.makeHttpRequest(request);
 	}
 
-	Tournament &Client::getTournamentById(unsigned long id)
+	std::shared_ptr<Tournament> Client::getTournamentById(unsigned long id)
 	{
 		if (this->_building && this->_building->getId() == id)
-			return *this->_building;
-		return *this->_cachedTournaments.at(id);
+			return this->_building;
+		return this->_cachedTournaments.at(id);
 	}
 
-	Tournament &Client::getTournamentByName(const std::string &name)
+	std::shared_ptr<Tournament> Client::getTournamentByName(const std::string &name)
 	{
 		std::string id = name;
 
@@ -89,7 +89,7 @@ namespace ChallongeAPI
 			this->_cachedTournaments[tournament->getId()] = tournament;
 			*tournament = parsed;
 			this->_building = nullptr;
-			return *tournament;
+			return tournament;
 		} catch (nlohmann::detail::exception &e) {
 			throw InvalidChallongeURLException(name, Client::_host + ("/tournaments/" + id) + ".json?include_participants=1&include_matches=1: " + e.what());
 		} catch (InvalidHTTPAnswerException &e) {

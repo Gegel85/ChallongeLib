@@ -69,7 +69,7 @@ namespace ChallongeAPI
 		return this->_forfeited;
 	}
 
-	const std::optional<json> &Match::getGroupId() const
+	const std::optional<size_t> &Match::getGroupId() const
 	{
 		return this->_groupId;
 	}
@@ -164,7 +164,7 @@ namespace ChallongeAPI
 		return this->_scheduledTime;
 	}
 
-	const std::optional<std::pair<size_t, size_t>> &Match::getScores() const
+	const std::optional<std::pair<int, int>> &Match::getScores() const
 	{
 		return this->_scores;
 	}
@@ -181,7 +181,9 @@ namespace ChallongeAPI
 
 	unsigned int Match::getSuggestedPlayOrder() const
 	{
-		return this->_suggestedPlayOrder;
+		if (!this->_suggestedPlayOrder)
+			return 0;
+		return *this->_suggestedPlayOrder;
 	}
 
 	size_t Match::getTournamentId() const

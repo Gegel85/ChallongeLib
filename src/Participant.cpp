@@ -14,7 +14,7 @@ namespace ChallongeAPI
 			unsigned long id;
 
 			getFromJson(id, "tournament_id", val["participant"]);
-			return &client.getTournamentById(id);
+			return client.getTournamentById(id);
 		}())
 	{
 		const auto &value = val["participant"];

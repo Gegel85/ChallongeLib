@@ -45,7 +45,7 @@ namespace ChallongeAPI
 	}
 
 	template<>
-	void getFromJson(std::optional<std::pair<size_t, size_t>> &val, const std::string &id, const json &obj);
+	void getFromJson(std::optional<std::pair<int, int>> &val, const std::string &id, const json &obj);
 
 	template<typename type>
 	void getFromJson(std::vector<type> &val, const std::string &id, const json &obj)

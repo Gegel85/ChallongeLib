@@ -130,6 +130,7 @@ namespace ChallongeAPI
 		//! @brief Create a NotImplementedException with a message.
 		//! @param msg The error message.
 		explicit NotImplementedException() : BaseException("Not implemented") {};
+		explicit NotImplementedException(const std::string &&msg) : BaseException(std::move(msg)) {};
 	};
 
 	//! @brief Define a InvalidHTTPAnswerException.

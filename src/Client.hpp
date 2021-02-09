@@ -33,8 +33,8 @@ namespace ChallongeAPI
 		Client &operator=(const Client &) = delete;
 		Client &operator=(const Client &&) = delete;
 		Client(const std::string &username, const std::string &apikey);
-		Tournament &getTournamentById(unsigned long id);
-		Tournament &getTournamentByName(const std::string &name);
+		std::shared_ptr<Tournament> getTournamentById(unsigned long id);
+		std::shared_ptr<Tournament> getTournamentByName(const std::string &name);
 		Socket::HttpResponse makeRawRequest(const std::string &method, const std::string &path, const std::string &data);
 		void setCredentials(const std::string &username, const std::string &apikey);
 	};
