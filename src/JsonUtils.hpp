@@ -37,7 +37,8 @@ namespace ChallongeAPI
 
 				getFromJson(tmp, id, obj);
 				val = tmp;
-			}
+			} else
+				val.reset();
 		} catch (std::exception &e) {
 			std::cerr << "Error getting element " << id << " from " << obj.dump(4) << ": " << e.what() << std::endl;
 			throw;

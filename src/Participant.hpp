@@ -36,7 +36,7 @@ namespace ChallongeAPI
 		std::optional<std::string> _emailHash;
 		std::optional<json>        _finalRank;
 		std::optional<json>        _groupId;
-		std::vector<unsigned long> _groupPlayerIds;
+		std::vector<size_t>        _groupPlayerIds;
 		bool                       _hasIrrelevantSeed;
 		std::optional<json>        _icon;
 		unsigned long              _id;
@@ -80,7 +80,7 @@ namespace ChallongeAPI
 		const std::optional<std::string> &getEmailHash() const;
 		const std::optional<json>        &getFinalRank() const;
 		const std::optional<json>        &getGroupId() const;
-		const std::vector<unsigned long> &getGroupPlayerIds() const;
+		const std::vector<size_t>        &getGroupPlayerIds() const;
 		bool                             hasIrrelevantSeed() const;
 		const std::optional<json>        &getIcon() const;
 		unsigned long                    getId() const;

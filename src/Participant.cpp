@@ -141,7 +141,7 @@ namespace ChallongeAPI
 		return this->_groupId;
 	}
 
-	const std::vector<unsigned long> &Participant::getGroupPlayerIds() const
+	const std::vector<size_t> &Participant::getGroupPlayerIds() const
 	{
 		return this->_groupPlayerIds;
 	}
